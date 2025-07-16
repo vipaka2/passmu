@@ -1,0 +1,13 @@
+symbols: ['!', '@', '#', '$', '%', '&', '*', '?', '1', '2', '3', '.', '_', '-']
+max_symbols: 3
+random_caps_per_variant: 2
+min_password_length: 5
+max_password_length: 24
+real_world_leet:
+  a: ['@', '4']
+  e: ['3']
+  i: ['1', '!']
+  o: ['0']
+  s: ['$', '5']
+  t: ['7']
+  l: ['1']
