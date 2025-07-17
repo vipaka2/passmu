@@ -1,6 +1,6 @@
 import itertools
 import random
-import yaml # type: ignore
+import yaml  # type: ignore
 
 def load_config(filename='config.yaml'):
     with open(filename, 'r', encoding='utf-8') as f:
@@ -48,6 +48,37 @@ def filter_by_length(variants, min_len=8, max_len=None):
         if len(pw) >= min_len and (max_len is None or len(pw) <= max_len)
     ]
 
+def generate_name_combinations(name_input, config):
+    parts = name_input.strip().split()
+    combos = []
+
+    if len(parts) == 2:
+        first, last = parts
+        combos = [
+            first + last,
+            first + '_' + last,
+            first + '.' + last,
+            first + '-' + last,
+            last + first
+        ]
+    else:
+        combos = [name_input.strip()]
+    
+    if config.get('use_years', True):
+        years_list = config.get('years', [])[-5:]
+        combo_with_years = []
+        for base in combos: 
+            if not any(str(y) in base for y in years_list):
+                combo_with_years.extend([base + str(y) for y in years_list])
+        combos += combo_with_years
+
+    if config.get('use_keyboard_walks', True):
+        combos += config.get('keyboard_walks', [])
+
+    combos = [str(c) for c in combos]
+
+    return combos
+
 def generate_password_variants(base_word, config):
     base_words = normal_caps_variants(base_word)
 
@@ -66,16 +97,19 @@ def generate_password_variants(base_word, config):
             random_caps_variants.add(random_caps(word))
 
     leet_variants = set()
-    for word in all_mutants:
-        leet_variants.update(
-            leetspeak_realistic(
-                word,
-                config['real_world_leet'],
-                max_subs=2
+    if config.get('use_leetspeak', True):
+        for word in all_mutants:
+            leet_variants.update(
+                leetspeak_realistic(
+                    word,
+                    config['real_world_leet'],
+                    max_subs=2
+                )
             )
-        )
 
-    full_set = all_mutants.union(random_caps_variants).union(leet_variants)
+    full_set = all_mutants.union(random_caps_variants)
+    if config.get('use_leetspeak', True):
+        full_set = full_set.union(leet_variants)
 
     return sorted(filter_by_length(
         full_set,
@@ -83,58 +117,48 @@ def generate_password_variants(base_word, config):
         max_len=config['max_password_length']
     ))
 
-def generate_name_combinations(name_input):
-    parts = name_input.strip().split()
-    if len(parts) != 2:
-        return [name_input.strip()]
-    first, last = parts
-    combos = [
-        first + last,
-        first + '_' + last,
-        first + '.' + last,
-        first + '-' + last,
-        last + first
-    ]
-    return combos
-
 def main():
     config = load_config('config.yaml')
     min_len = config['min_password_length']
     max_len = config['max_password_length']
 
-    print("🔐 Passmu (Password Mutation Generator)")
-    base_word = input("Enter a base word: ").strip()
+    print("\nPassword Mutation Generator")
+    base_word = input("Enter a single word or 'first last': ").strip()
     if not base_word:
-        print("❌ No input received. Exiting.")
+        print("No input received. Exiting.")
         return
 
     if len(base_word) < min_len:
-        print(f"⚠️  Base word '{base_word}' is shorter than {min_len} characters.")
-    if len(base_word) > max_len:
-        print(f"⚠️  Base word '{base_word}' is longer than {max_len} characters.")
+        print(f"Note: base word '{base_word}' is shorter than {min_len} characters.")
 
-    print(f"\n🔧 Generating mutations for: '{base_word}'")
+    if len(base_word) > max_len:
+        print(f"Note: base word '{base_word}' is longer than {max_len} characters.")
+
+    print(f"\nGenerating mutations for: '{base_word}'")
     print(f"Symbols: {' '.join(config['symbols'])}")
     print(f"Max insertions: {config['max_symbols']}")
     print(f"Random caps per variant: {config['random_caps_per_variant']}")
-    print(f"Leetspeak substitutions: enabled")
+
+    print(f"\nLeetspeak substitutions: {'ENABLED' if config.get('use_leetspeak', True) else 'DISABLED'}")
+    print(f"Years added: {'ENABLED' if config.get('use_years', True) else 'DISABLED'}")
+    print(f"Keyboard walks: {'ENABLED' if config.get('use_keyboard_walks', True) else 'DISABLED'}")
 
     all_variants = set()
-    for word in generate_name_combinations(base_word):
+    for word in map(str, generate_name_combinations(base_word, config)):
         word_variants = generate_password_variants(word, config)
         all_variants.update(word_variants)
 
     variants = sorted(all_variants)
 
-    print(f"\n✅ Generated {len(variants):,} password variants.")
+    print(f"\nGenerated {len(variants):,} password variants.")
 
-    save = input("\n💾 Save output to file? (y/n): ").strip().lower()
+    save = input("\nSave output to file? (y/n): ").strip().lower()
     if save == 'y':
-        filename = f"{base_word.replace(' ', '_')}_mutations_.txt"
+        filename = f"{base_word.replace(' ', '_')}_mutations.txt"
         with open(filename, 'w', encoding='utf-8') as f:
             for v in variants:
                 f.write(v + '\n')
-        print(f"✅ Saved to {filename}")
+        print(f"Saved to {filename}")
 
 if __name__ == "__main__":
     main()
