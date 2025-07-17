@@ -13,3 +13,7 @@ Passmu is a powerful password mutation tool for security and penetration testing
 - **Config**: YAML config file for easy customization
 - **Leetspeak**: Real-world leetspeak substitutions
 - **Output**: Save all passwords to text file
+
+# 🖵 Screenshot
+
+![Passmu Terminal Screenshot](screenshot.png)
