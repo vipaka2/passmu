@@ -16,7 +16,7 @@ Passmu is a powerful password mutation tool for security and penetration testing
 
 ## 🖵 Screenshot
 
-![Passmu Terminal Screenshot](screenshot.png)
+![Passmu Terminal Screenshot](screenshot_2.png)
 
 ## ⚙️ Config
 
