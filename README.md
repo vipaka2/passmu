@@ -14,6 +14,6 @@ Passmu is a powerful password mutation tool for security and penetration testing
 - **Leetspeak**: Real-world leetspeak substitutions
 - **Output**: Save all passwords to text file
 
-# 🖵 Screenshot
+## 🖵 Screenshot
 
 ![Passmu Terminal Screenshot](screenshot.png)
