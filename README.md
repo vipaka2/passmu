@@ -17,15 +17,15 @@ Passmu is a powerful password mutation tool for security and penetration testing
 
 ## CLI
 
-``Password Mutation Generator ``
+``> Password Mutation Generator ``
 
-``Enter a single word or 'first last': dragon ``
+``> Enter a single word or 'first last': dragon ``
 
-``Generated 1,639,943 password variants in 1 file(s).``
+``> Generated 1,639,943 password variants in 1 file(s).``
 
-``Time to generate: 2.02 seconds``
+``> Time to generate: 2.02 seconds``
 
-``Last saved file: dragon_mutations_part1.txt``
+``> Last saved file: dragon_mutations_part1.txt``
 
 ## Config
 
@@ -71,12 +71,7 @@ years:
   - "2025"
   - "2024"
   - "2023"
-  - "2022"
-  - "2021"
-  - "2020"
-  - "2019"
-  - "2018"
-  - "2017"
-  - "2016"
-  - "2015"
+  - "02"
+  - "01"
+  - "00"
 ```
