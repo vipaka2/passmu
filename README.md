@@ -25,7 +25,7 @@ max_lines_per_file: 10000000
 random_caps_per_variant: 2
 max_password_length: 24
 min_password_length: 8
-max_symbols: 3
+max_symbols: 2
 
 use_short_years: true
 use_long_years: false
