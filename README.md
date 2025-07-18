@@ -11,8 +11,9 @@ Passmu is a powerful password mutation tool for security and penetration testing
 - **Capitalization**: lowercase, uppercase, capitalized, and title case
 - **Symbol and number**: before, after, and inside the word
 - **Config**: YAML config file for easy customization
-- **Leetspeak**: Real-world leetspeak substitutions
-- **Output**: Save all passwords to text file
+- **Leetspeak**: real-world leetspeak substitutions
+- **On-the-fly compression**: save output to gzip
+- **Output**: Save output to text file
 
 ## 🖵 Screenshot
 
