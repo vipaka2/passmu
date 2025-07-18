@@ -18,6 +18,7 @@ def random_caps(word):
 def insert_symbols_everywhere(word, symbols, max_symbols):
     positions = list(range(len(word) + 1))
     results = {word}
+
     for n in range(1, max_symbols + 1):
         for sym_seq in itertools.product(symbols, repeat=n):
             for pos_seq in itertools.combinations_with_replacement(positions, n):
@@ -32,6 +33,7 @@ def insert_symbols_everywhere(word, symbols, max_symbols):
 def leetspeak_realistic(word, leet_map, max_subs=2):
     indexes = [i for i, c in enumerate(word) if c.lower() in leet_map]
     variants = {word}
+
     for subs in range(1, max_subs + 1):
         for pos_combo in itertools.combinations(indexes, subs):
             replacements = []
@@ -51,6 +53,7 @@ def filter_by_length(variants, min_len=8, max_len=None):
 def generate_name_combinations(name_input, config):
     parts = name_input.strip().split()
     combos = []
+
     if len(parts) == 2:
         first, last = parts
         combos = [
@@ -68,6 +71,7 @@ def generate_name_combinations(name_input, config):
         short_true = config.get('use_short_years', False)
         all_years = config.get('years', [])
         filtered_years = []
+
         for y in all_years:
             if (long_true and len(y) == 4) or (short_true and len(y) == 2):
                 filtered_years.append(y)
@@ -82,6 +86,7 @@ def generate_name_combinations(name_input, config):
 def generate_password_variants(base_word, config):
     base_words = normal_caps_variants(base_word)
     all_mutants = set()
+
     for form in base_words:
         mutated = insert_symbols_everywhere(
             form,
@@ -127,6 +132,7 @@ def main():
     max_lines_per_file = config.get('max_lines_per_file', 0)
 
     print("\nPassword Mutation Generator")
+    
     base_word = input("Enter a single word or 'first last': ").strip()
     if not base_word:
         print("No input received. Exiting.")
