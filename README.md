@@ -1,26 +1,25 @@
-# 🔐 Passmu (Password Mutation Generator)
+# Passmu (Password Mutation Generator)
 
 Passmu is a powerful password mutation tool for security and penetration testing.
 
 ---
 
-## ✅ Features
+## Core Features
 
-- **First and last name**: concatenated, underscore, dot, hyphen, and reversed
-- **Random capitalization**: randomly mixed uppercase and lowercase letters
+- **Random Capitalization**: randomly mixed uppercase and lowercase letters
+- **First and Last**: concatenated, underscore, dot, hyphen, and reversed
 - **Capitalization**: lowercase, uppercase, capitalized, and title case
-- **Symbol and number**: before, after, and inside the word
-- **Max lines per file**: control how many lines per file
+- **Symbol and Number**: before, after, and inside the word
+- **Max Lines Per File**: control how many lines per file
 - **Config**: YAML config file for easy customization
 - **Leetspeak**: real-world leetspeak substitutions
 - **On-the-fly compression**: save output to gzip
-- **Output**: Save output to text file
 
-## 🖵 Screenshot
+## Screenshot
 
 ![Passmu Terminal Screenshot](screenshot_2.png)
 
-## ⚙️ Config
+## Config
 
 ```
 max_lines_per_file: 10000000
