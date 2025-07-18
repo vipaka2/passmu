@@ -4,7 +4,7 @@ Passmu is a powerful password mutation tool for security and penetration testing
 
 ---
 
-## Core Features
+## Features
 
 - **Random Capitalization**: randomly mixed uppercase and lowercase letters
 - **First and Last**: concatenated, underscore, dot, hyphen, and reversed
