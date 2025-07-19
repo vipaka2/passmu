@@ -1,16 +1,17 @@
 max_lines_per_file: 10000000
 random_caps_per_variant: 2
 max_password_length: 24
-min_password_length: 8
+min_password_length: 4
 max_symbols: 2
-
-use_short_years: true
-use_long_years: false
-use_years: true
 
 use_keyboard_walks: false
 use_compression: false
 use_leetspeak: false
+use_symbols: false
+
+use_short_years: false
+use_long_years: false
+use_years: false
 
 symbols: ['!', '@', '#', '$', '%', '&', '*', '?', '1', '2', '3', '.', '_', '-']
 real_world_leet:
