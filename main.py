@@ -185,8 +185,8 @@ def main():
                 combined = f"{first.strip()} {last.strip()}"
                 name_combos.extend(generate_name_combinations(combined, config))
         base_word = "names_us"
+        
         print(f"\nLoaded {len(first_names)} US first names and {len(last_names)} last names.")
-        print(f"Generated {len(name_combos)} base combinations.")
         
     elif args.names == 'uk':
         first_names, last_names = load_names('names_uk.yaml')
@@ -198,6 +198,7 @@ def main():
                 combined = f"{first.strip()} {last.strip()}"
                 name_combos.extend(generate_name_combinations(combined, config))
         base_word = "names_uk"
+        
         print(f"\nLoaded {len(first_names)} UK first names and {len(last_names)} last names.")
         
     else:
