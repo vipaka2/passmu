@@ -187,7 +187,7 @@ def main():
         base_word = "names_us"
         print(f"\nLoaded {len(first_names)} US first names and {len(last_names)} last names.")
         print(f"Generated {len(name_combos)} base combinations.")
-
+        
     elif args.names == 'uk':
         first_names, last_names = load_names('names_uk.yaml')
         if not first_names or not last_names:
@@ -199,7 +199,7 @@ def main():
                 name_combos.extend(generate_name_combinations(combined, config))
         base_word = "names_uk"
         print(f"\nLoaded {len(first_names)} UK first names and {len(last_names)} last names.")
-
+        
     else:
         base_word = input("Enter a single word or 'First Last': ").strip()
         if not base_word:
@@ -217,6 +217,7 @@ def main():
     print(f"Years added: {'ENABLED' if config.get('use_years', False) else 'DISABLED'}")
     print(f"Long years: {'ENABLED' if config.get('use_long_years', False) else 'DISABLED'}")
     print(f"Short years: {'ENABLED' if config.get('use_short_years', False) else 'DISABLED'}")
+    
     if max_lines_per_file:
         print(f"Splitting output files every {max_lines_per_file:,} lines.")
 
@@ -224,12 +225,13 @@ def main():
     part_num = 1
     lines_in_part = 0
     total_written = 0
+    
     output_file = get_output_filename(base_word, part_num, use_compression)
-
     file_open = gzip.open if use_compression else open
     file_args = {'mode': 'wt', 'encoding': 'utf-8'}
 
     start_time = time.time()
+    
     f = file_open(output_file, **file_args)
     try:
         with multiprocessing.Pool(processes=cpu_cores) as pool:
