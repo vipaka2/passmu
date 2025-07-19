@@ -37,9 +37,9 @@ Passmu is a powerful password mutation tool for security and penetration testing
 
 - **--no-leetspeak**: disable leetspeak
 
-- **--names us**: Use names_us.yaml
+- **--names us**: use names_us.yaml
 
-- **--names uk**: Use names_uk.yaml
+- **--names uk**: use names_uk.yaml
   
 ## Config
 
