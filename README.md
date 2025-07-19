@@ -15,18 +15,6 @@ Passmu is a powerful password mutation tool for security and penetration testing
 - **Leetspeak**: real-world leetspeak substitutions
 - **On-the-fly compression**: save output to gzip
 
-## CLI
-
-``> Password Mutation Generator ``
-
-``> Enter a single word or 'first last': dragon ``
-
-``> Generated 1,639,943 password variants in 1 file(s).``
-
-``> Time to generate: 2.02 seconds``
-
-``> Last saved file: dragon_mutations_part1.txt``
-
 ## Flags
 
 - **--no-keyboard-walk**: disable keyboard walk
