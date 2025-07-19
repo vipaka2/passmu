@@ -27,6 +27,20 @@ Passmu is a powerful password mutation tool for security and penetration testing
 
 ``> Last saved file: dragon_mutations_part1.txt``
 
+## Flags
+
+- **--no-keyboard-walk**: disable keyboard walk
+  
+- **--no-compress**: disable compression
+
+- **--no-symbols**: disable all symbols
+
+- **--no-leetspeak**: disable leetspeak
+
+- **--names us**: Use names_us.yaml
+
+- **--names uk**: Use names_uk.yaml
+  
 ## Config
 
 ```
